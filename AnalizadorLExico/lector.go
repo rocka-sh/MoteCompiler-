@@ -7,7 +7,6 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"unicode"
 )
 
 func abrirArchivo(p string) (*os.File, error) {
@@ -34,9 +33,6 @@ func lectorArchivo(f *os.File) []rune {
 		}
 		if err != nil {
 			log.Fatal("Error con el char:", err)
-		}
-		if unicode.IsSpace(char) {
-			continue
 		}
 		chars = append(chars, char)
 	}
