@@ -20,7 +20,7 @@ func abrirArchivo(p string) (*os.File, error) {
 	return file, nil
 }
 
-// TODO: hacer que retornen los chars
+// abre el archivo y lo hace un arreglo de caracteres, agregando %s \t \n
 func lectorArchivo(f *os.File) []rune {
 	reader := bufio.NewReader(f)
 	var chars []rune
