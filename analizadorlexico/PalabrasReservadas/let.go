@@ -4,36 +4,36 @@ import (
 	adf "MoteCompiler/analizadorlexico"
 )
 
-var LexemaFor = adf.Lexema{
-	QInicial: Q0For,
+var LexemaLet = adf.Lexema{
+	QInicial: Q0Let,
 	Token:    "Palabra reservada",
 }
 
-var Q3For = adf.Estado{
+var Q3Let = adf.Estado{
 	Transiciones: nil,
 	IsF:          true,
 }
 
-var Q2For = adf.Estado{
+var Q2Let = adf.Estado{
 	Transiciones: map[rune]*adf.Estado{
-		'r': &Q3For,
-		'R': &Q3For,
+		't': &Q3Let,
+		'T': &Q3Let,
 	},
 	IsF: false,
 }
 
-var Q1For = adf.Estado{
+var Q1Let = adf.Estado{
 	Transiciones: map[rune]*adf.Estado{
-		'o': &Q2For,
-		'O': &Q2For,
+		'e': &Q2Let,
+		'E': &Q2Let,
 	},
 	IsF: false,
 }
 
-var Q0For = adf.Estado{
+var Q0Let = adf.Estado{
 	Transiciones: map[rune]*adf.Estado{
-		'f': &Q1For,
-		'F': &Q1For,
+		'l': &Q1Let,
+		'L': &Q1Let,
 	},
 	IsF: false,
 }
