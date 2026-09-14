@@ -26,7 +26,6 @@ func LectorArchivo(p string) ([]rune, error) {
 	for {
 		char, _, err := reader.ReadRune()
 		if err == io.EOF {
-			fmt.Println("fin archivo, EOF")
 			break
 		}
 		if err != nil {

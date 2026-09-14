@@ -4,35 +4,36 @@ import (
 	adf "MoteCompiler/analizadorlexico"
 )
 
-var Q2Cadena = adf.Estado{
-	Transiciones: nil,
-	IsF:          true,
-}
-
-var Q1Cadena = adf.Estado{
-	Transiciones: nil,
-	IsF:          false,
-}
-
-var Q0Cadena = adf.Estado{
-	Transiciones: map[rune]*adf.Estado{
-		'"': &Q1Cadena,
-	},
-	IsF: false,
-}
-
-var LexemaCadena = adf.Lexema{
-	Token: "LITERAL_CADENA",
-}
+var LexemaCadena adf.Lexema
 
 func initCadenas() {
-	var r rune
-	var mapaC0 map[rune]*adf.Estado = make(map[rune]*adf.Estado)
-	for r = 32; r <= 126; r++ {
+	Q2 := &adf.Estado{
+		Transiciones: nil,
+		IsF:          true,
+	}
+
+	Q1 := &adf.Estado{
+		IsF: false,
+	}
+
+	mapaQ1 := make(map[rune]*adf.Estado)
+	for r := rune(32); r <= 126; r++ {
 		if r != '"' && r != '\\' {
-			mapaC0[r] = &Q1Cadena
+			mapaQ1[r] = Q1
 		}
 	}
-	mapaC0['"'] = &Q2Cadena
-	Q1Cadena.Transiciones = mapaC0
+	mapaQ1['"'] = Q2
+	Q1.Transiciones = mapaQ1
+
+	Q0 := adf.Estado{
+		Transiciones: map[rune]*adf.Estado{
+			'"': Q1,
+		},
+		IsF: false,
+	}
+
+	LexemaCadena = adf.Lexema{
+		QInicial: Q0,
+		Token:    "LITERAL_CADENA",
+	}
 }

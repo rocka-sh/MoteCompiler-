@@ -4,75 +4,78 @@ import (
 	adf "MoteCompiler/analizadorlexico"
 )
 
-var LexemaEntero = adf.Lexema{
-	QInicial: Q0Entero,
-	Token:    "Numero Entero",
-}
-
-var LexemaFlotante = adf.Lexema{
-	QInicial: Q0Flotante,
-	Token:    "Numero Flotante",
-}
-
-var Q1Entero = adf.Estado{
-	Transiciones: nil,
-	IsF:          true,
-}
-
-var Q0Entero = adf.Estado{
-	Transiciones: nil,
-	IsF:          false,
-}
-
-var Q3Flotante = adf.Estado{
-	Transiciones: nil,
-	IsF:          true,
-}
-
-var Q2Flotante = adf.Estado{
-	Transiciones: nil,
-	IsF:          false,
-}
-
-var Q1Flotante = adf.Estado{
-	Transiciones: map[rune]*adf.Estado{
-		'.': &Q2Flotante,
-	},
-	IsF: false,
-}
-
-var Q0Flotante = adf.Estado{
-	Transiciones: nil,
-	IsF:          false,
-}
+var LexemaEntero adf.Lexema
+var LexemaFlotante adf.Lexema
 
 // GO NO PERMITE INICIALIZAR STRUCTS QUE SE LLAMEN A ELLOS MISMOS, POR ESO SE HACE EN EL INIT
 // PRINCIPALEMENTE PARA LOS NUMEROS, CADENAS E IDENTIFICADORES, YA QUE PUEDEN SER INFINITOS
 
 func initNumeros() {
 	// INICIALIZACION DE NUMEROS PARA ENTEROS
-	var mapaN1 map[rune]*adf.Estado = make(map[rune]*adf.Estado)
-	var mapaN0 map[rune]*adf.Estado = make(map[rune]*adf.Estado)
-	for r := '0'; r <= '9'; r++ {
-		mapaN0[r] = &Q1Entero
-		mapaN1[r] = &Q1Entero
+	Q1E := &adf.Estado{
+		IsF: true,
 	}
-	Q0Entero.Transiciones = mapaN0
-	Q1Entero.Transiciones = mapaN1
+
+	mapaN0 := make(map[rune]*adf.Estado)
+	mapaN1 := make(map[rune]*adf.Estado)
+	for r := '0'; r <= '9'; r++ {
+		mapaN0[r] = Q1E
+		mapaN1[r] = Q1E
+	}
+	Q1E.Transiciones = mapaN1
+
+	Q0E := adf.Estado{
+		Transiciones: mapaN0,
+		IsF:          false,
+	}
+
+	LexemaEntero = adf.Lexema{
+		QInicial: Q0E,
+		Token:    "Numero Entero",
+	}
 
 	// INICIALIZACION DE NUMEROS PARA FLOTANTES
-	var mapaF2 map[rune]*adf.Estado = make(map[rune]*adf.Estado)
-	var mapaF3 map[rune]*adf.Estado = make(map[rune]*adf.Estado)
-	var mapaF0 map[rune]*adf.Estado = make(map[rune]*adf.Estado)
+	Q3F := &adf.Estado{
+		IsF: true,
+	}
+
+	Q2F := &adf.Estado{
+		IsF: false,
+	}
+
+	Q1F := &adf.Estado{
+		Transiciones: map[rune]*adf.Estado{
+			'.': Q2F,
+		},
+		IsF: false,
+	}
+
+	mapaF0 := make(map[rune]*adf.Estado)
+	mapaF2 := make(map[rune]*adf.Estado)
+	mapaF3 := make(map[rune]*adf.Estado)
 
 	for r := '0'; r <= '9'; r++ {
-		mapaF0[r] = &Q1Flotante
-		mapaF2[r] = &Q3Flotante
-		mapaF3[r] = &Q3Flotante
-
+		mapaF0[r] = Q1F
+		mapaF2[r] = Q3F
+		mapaF3[r] = Q3F
 	}
-	Q0Flotante.Transiciones = mapaF0
-	Q2Flotante.Transiciones = mapaF2
-	Q3Flotante.Transiciones = mapaF3
 
+	// Q1F también necesita las transiciones de dígitos para números como 123.1
+	for r := '0'; r <= '9'; r++ {
+		Q1F.Transiciones[r] = Q1F
+	}
+
+	Q2F.Transiciones = mapaF2
+	Q3F.Transiciones = mapaF3
+
+	Q0F := adf.Estado{
+		Transiciones: mapaF0,
+		IsF:          false,
+	}
+
+	LexemaFlotante = adf.Lexema{
+		QInicial: Q0F,
+		Token:    "Numero Flotante",
+	}
 }
+
