@@ -5,22 +5,26 @@ type Lexema struct {
 	Token    string
 }
 
-func (l *Lexema) D(r []rune) *Lexema {
+func (l *Lexema) D(r []rune) int {
 	q := &l.QInicial
+
+	var longitudMax int = 0
+	var acumulado int = 0
+
 	for _, v := range r {
 		siguienteEstado := q.d(v)
 
 		//recibio un caracter no aceptado en el adf
 		if siguienteEstado == nil {
-			return nil
+			break
 		}
-
+		acumulado++
 		q = siguienteEstado
+
+		if q.IsF {
+			longitudMax = acumulado
+		}
 	}
 
-	if q.IsF {
-		return l
-	}
-
-	return nil
+	return longitudMax
 }

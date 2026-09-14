@@ -7,7 +7,6 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"unicode"
 )
 
 // abre el archivo y lo hace un arreglo de caracteres, agregando %s \t \n
@@ -37,27 +36,4 @@ func LectorArchivo(p string) ([]rune, error) {
 	}
 
 	return chars, nil
-}
-
-// separa por palabras
-func SepararPorEspacios(caracteres []rune) [][]rune {
-	var palabras [][]rune
-	var palabraActual []rune
-
-	for _, char := range caracteres {
-		if unicode.IsSpace(char) {
-			if len(palabraActual) > 0 {
-				palabras = append(palabras, palabraActual)
-				palabraActual = nil
-			}
-		} else {
-			palabraActual = append(palabraActual, char)
-		}
-	}
-
-	if len(palabraActual) > 0 {
-		palabras = append(palabras, palabraActual)
-	}
-
-	return palabras
 }

@@ -1,19 +1,23 @@
 package analizadorlexico
 
-import (
-	"fmt"
-)
-
 type Token struct {
 	Tipo    string
 	Lexemas []Lexema
 }
 
-func (t Token) Tokenizador(runes []rune) {
+func (t Token) EvaluarPrefijo(r []rune) (*Lexema, int) {
+	var mejorLongitud int = 0
+	var mejorLexema *Lexema = nil
+
 	for _, lexema := range t.Lexemas {
-		if lexema.D(runes) != nil {
-			fmt.Println(t.Tipo, " ", string(runes))
-			break
+		var longitud int
+		longitud = lexema.D(r)
+
+		if longitud > mejorLongitud {
+			mejorLongitud = longitud
+			mejorLexema = &lexema
 		}
 	}
+
+	return mejorLexema, mejorLongitud
 }
