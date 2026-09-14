@@ -23,8 +23,8 @@ func main() {
 }
 
 func EscanearTokens(contenido []rune, tokenReservadas adf.Token, tokenLiterales adf.Token, tokenIdentificador adf.Token) {
-	var i int = 0
-	var n int = len(contenido)
+	i := 0
+	n := len(contenido)
 
 	for i < n {
 		if unicode.IsSpace(contenido[i]) {
@@ -32,29 +32,36 @@ func EscanearTokens(contenido []rune, tokenReservadas adf.Token, tokenLiterales 
 			continue
 		}
 
-		var subslice []rune = contenido[i:]
-		var lexemaEncontrado *adf.Lexema = nil
-		var longitud int = 0
+		subslice := contenido[i:]
+		var mejorLexema *adf.Lexema
+		mejorLongitud := 0
 
-		//primero palabras reservadas
-		lexemaEncontrado, longitud = tokenReservadas.EvaluarPrefijo(subslice)
-
-		// Literales (si no fue palabra reservada)
-		if longitud == 0 {
-			lexemaEncontrado, longitud = tokenLiterales.EvaluarPrefijo(subslice)
+		// 1. Palabras Reservadas
+		lexRes, lenRes := tokenReservadas.EvaluarPrefijo(subslice)
+		if lenRes > mejorLongitud {
+			mejorLongitud = lenRes
+			mejorLexema = lexRes
 		}
 
-		// Identificadores (si no fue literal ni reservada)
-		if longitud == 0 {
-			lexemaEncontrado, longitud = tokenIdentificador.EvaluarPrefijo(subslice)
+		// 2. Literales
+		lexLit, lenLit := tokenLiterales.EvaluarPrefijo(subslice)
+		if lenLit > mejorLongitud {
+			mejorLongitud = lenLit
+			mejorLexema = lexLit
 		}
 
-		if longitud > 0 {
-			var textoToken string = string(contenido[i : i+longitud])
-			fmt.Println("Token:", lexemaEncontrado.Token, "Lexema:", textoToken)
-			i += longitud
+		// 3. Identificador (solo si supera en longitud a la palabra reservada)
+		lexId, lenId := tokenIdentificador.EvaluarPrefijo(subslice)
+		if lenId > mejorLongitud {
+			mejorLongitud = lenId
+			mejorLexema = lexId
+		}
+
+		if mejorLongitud > 0 {
+			fmt.Println("Token:", mejorLexema.Token, "Lexema:", string(contenido[i:i+mejorLongitud]))
+			i += mejorLongitud
 		} else {
-			fmt.Println("Caracteres no reconocidos: ", string(contenido[i]))
+			fmt.Println("Caracteres no reconocidos:", string(contenido[i]))
 			i++
 		}
 	}
