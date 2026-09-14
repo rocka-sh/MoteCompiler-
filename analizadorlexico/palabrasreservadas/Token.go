@@ -9,8 +9,6 @@ var PalabrasReservadas = adf.Token{
 	Lexemas: []adf.Lexema{
 		LexemaAnd,
 		LexemaBool,
-		LexemaTrue,
-		LexemaFalse,
 		LexemaInt,
 		LexemaFloat,
 		LexemaString,

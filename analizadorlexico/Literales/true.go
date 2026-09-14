@@ -1,4 +1,4 @@
-package palabrasreservadas
+package literales
 
 import (
 	adf "MoteCompiler/analizadorlexico"
@@ -6,7 +6,7 @@ import (
 
 var LexemaTrue = adf.Lexema{
 	QInicial: Q0True,
-	Token:    "Palabra reservada",
+	Token:    "Booleano",
 }
 
 var Q4True = adf.Estado{
