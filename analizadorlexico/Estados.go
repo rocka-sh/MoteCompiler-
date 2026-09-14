@@ -6,6 +6,9 @@ type Estado struct {
 }
 
 func (e *Estado) d(w rune) *Estado {
+	if e.Transiciones == nil {
+		return nil
+	}
 	var siguiente *Estado = e.Transiciones[w]
 	return siguiente
 }

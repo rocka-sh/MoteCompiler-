@@ -7,9 +7,11 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"unicode"
 )
 
-func abrirArchivo(p string) (*os.File, error) {
+// abre el archivo y lo hace un arreglo de caracteres, agregando %s \t \n
+func LectorArchivo(p string) ([]rune, error) {
 	rutaAbsoluta, err := filepath.Abs(p)
 	file, err := os.Open(rutaAbsoluta)
 
@@ -17,12 +19,9 @@ func abrirArchivo(p string) (*os.File, error) {
 		fmt.Println("no se pudo abrir el archivo", err)
 		return nil, err
 	}
-	return file, nil
-}
+	defer file.Close()
 
-// abre el archivo y lo hace un arreglo de caracteres, agregando %s \t \n
-func lectorArchivo(f *os.File) []rune {
-	reader := bufio.NewReader(f)
+	reader := bufio.NewReader(file)
 	var chars []rune
 
 	for {
@@ -37,5 +36,28 @@ func lectorArchivo(f *os.File) []rune {
 		chars = append(chars, char)
 	}
 
-	return chars
+	return chars, nil
+}
+
+// separa por palabras
+func SepararPorEspacios(caracteres []rune) [][]rune {
+	var palabras [][]rune
+	var palabraActual []rune
+
+	for _, char := range caracteres {
+		if unicode.IsSpace(char) {
+			if len(palabraActual) > 0 {
+				palabras = append(palabras, palabraActual)
+				palabraActual = nil
+			}
+		} else {
+			palabraActual = append(palabraActual, char)
+		}
+	}
+
+	if len(palabraActual) > 0 {
+		palabras = append(palabras, palabraActual)
+	}
+
+	return palabras
 }
