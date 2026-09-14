@@ -60,7 +60,6 @@ func initNumeros() {
 		mapaF3[r] = Q3F
 	}
 
-	// Q1F también necesita las transiciones de dígitos para números como 123.1
 	for r := '0'; r <= '9'; r++ {
 		Q1F.Transiciones[r] = Q1F
 	}
@@ -78,4 +77,3 @@ func initNumeros() {
 		Token:    "Numero Flotante",
 	}
 }
-

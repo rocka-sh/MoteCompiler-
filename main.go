@@ -4,6 +4,7 @@ import (
 	adf "MoteCompiler/analizadorlexico"
 	id "MoteCompiler/analizadorlexico/identificadores"
 	lit "MoteCompiler/analizadorlexico/literales"
+	op "MoteCompiler/analizadorlexico/operadorespuntuacion"
 	pr "MoteCompiler/analizadorlexico/palabrasreservadas"
 	"fmt"
 	"os"
@@ -21,15 +22,16 @@ func main() {
 	tR := pr.PalabrasReservadas
 	tL := lit.Literales
 	tI := id.Identificadores
+	tO := op.OperadoresPuntuacion
 
 	lit.InitADF()
 	id.InitADF()
 
-	EscanearTokens(palabras, tR, tL, tI)
+	EscanearTokens(palabras, tR, tL, tI, tO)
 
 }
 
-func EscanearTokens(contenido []rune, tR adf.Token, tL adf.Token, tI adf.Token) {
+func EscanearTokens(contenido []rune, tR adf.Token, tL adf.Token, tI adf.Token, tO adf.Token) {
 	i := 0
 	n := len(contenido)
 
@@ -59,6 +61,12 @@ func EscanearTokens(contenido []rune, tR adf.Token, tL adf.Token, tI adf.Token) 
 		if lenId > mejorLongitud {
 			mejorLongitud = lenId
 			mejorLexema = lexId
+		}
+
+		lexOp, lenOp := tO.EvaluarPrefijo(subslice)
+		if lenOp > mejorLongitud {
+			mejorLongitud = lenOp
+			mejorLexema = lexOp
 		}
 
 		if mejorLongitud > 0 {
