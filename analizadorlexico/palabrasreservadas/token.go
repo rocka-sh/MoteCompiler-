@@ -5,7 +5,7 @@ import (
 )
 
 var PalabrasReservadas = adf.Token{
-	Tipo: "Palabra Reservada",
+	Tipo: "palabra_reservada",
 	Lexemas: []*adf.Lexema{
 		&LexemaAnd,
 		&LexemaBool,

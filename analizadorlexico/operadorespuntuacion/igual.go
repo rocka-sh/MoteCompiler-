@@ -8,7 +8,7 @@ import (
 
 var LexemaIgual = adf.Lexema{
 	QInicial: Q0Igual,
-	Token:    "IGUAL",
+	Token:    "igual",
 }
 
 var Q1Igual = adf.Estado{

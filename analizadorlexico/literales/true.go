@@ -6,7 +6,7 @@ import (
 
 var LexemaTrue = adf.Lexema{
 	QInicial: Q0True,
-	Token:    "Booleano",
+	Token:    "booleano",
 }
 
 var Q4True = adf.Estado{

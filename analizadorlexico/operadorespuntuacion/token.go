@@ -5,7 +5,7 @@ import (
 )
 
 var OperadoresPuntuacion = adf.Token{
-	Tipo: "Operador/Puntuacion",
+	Tipo: "operador/puntuacion",
 	Lexemas: []*adf.Lexema{
 		&LexemaAsignacion,
 		&LexemaIgual,

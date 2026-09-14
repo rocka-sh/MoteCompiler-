@@ -8,7 +8,7 @@ import (
 
 var LexemaComa = adf.Lexema{
 	QInicial: Q0Coma,
-	Token:    "COMA",
+	Token:    "coma",
 }
 
 var Q1Coma = adf.Estado{

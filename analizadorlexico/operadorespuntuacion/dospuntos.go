@@ -8,7 +8,7 @@ import (
 
 var LexemaDosPuntos = adf.Lexema{
 	QInicial: Q0DosPuntos,
-	Token:    "DOS_PUNTOS",
+	Token:    "dos_puntos",
 }
 
 var Q1DosPuntos = adf.Estado{

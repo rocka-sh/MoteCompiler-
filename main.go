@@ -51,6 +51,12 @@ func EscanearTokens(contenido []rune, tR adf.Token, tL adf.Token, tI adf.Token, 
 			mejorLexema = lexRes
 		}
 
+		lexOp, lenOp := tO.EvaluarPrefijo(subslice)
+		if lenOp > mejorLongitud {
+			mejorLongitud = lenOp
+			mejorLexema = lexOp
+		}
+
 		lexLit, lenLit := tL.EvaluarPrefijo(subslice)
 		if lenLit > mejorLongitud {
 			mejorLongitud = lenLit
@@ -61,12 +67,6 @@ func EscanearTokens(contenido []rune, tR adf.Token, tL adf.Token, tI adf.Token, 
 		if lenId > mejorLongitud {
 			mejorLongitud = lenId
 			mejorLexema = lexId
-		}
-
-		lexOp, lenOp := tO.EvaluarPrefijo(subslice)
-		if lenOp > mejorLongitud {
-			mejorLongitud = lenOp
-			mejorLexema = lexOp
 		}
 
 		if mejorLongitud > 0 {

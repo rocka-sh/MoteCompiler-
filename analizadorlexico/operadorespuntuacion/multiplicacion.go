@@ -8,7 +8,7 @@ import (
 
 var LexemaMultiplicacion = adf.Lexema{
 	QInicial: Q0Multiplicacion,
-	Token:    "MULTIPLICACION",
+	Token:    "multiplicacion",
 }
 
 var Q1Multiplicacion = adf.Estado{

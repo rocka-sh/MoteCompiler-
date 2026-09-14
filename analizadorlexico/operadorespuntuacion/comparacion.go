@@ -8,7 +8,7 @@ import (
 
 var LexemaComparacion = adf.Lexema{
 	QInicial: Q0Comparacion,
-	Token:    "COMPARACION",
+	Token:    "comparacion",
 }
 
 var Q2Comparacion = adf.Estado{

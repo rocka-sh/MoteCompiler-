@@ -5,7 +5,7 @@ import (
 )
 
 var Literales = adf.Token{
-	Tipo: "Literales",
+	Tipo: "literales",
 	Lexemas: []*adf.Lexema{
 		&LexemaTrue,
 		&LexemaFalse,

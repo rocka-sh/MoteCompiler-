@@ -6,7 +6,7 @@ import (
 
 var LexemaOr = adf.Lexema{
 	QInicial: Q0Or,
-	Token:    "Palabra reservada",
+	Token:    "palabra_reservada",
 }
 
 var Q2Or = adf.Estado{
