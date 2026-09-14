@@ -4,12 +4,12 @@ import adf "MoteCompiler/analizadorlexico"
 
 var Identificadores = adf.Token{
 	Tipo: "Identificador",
-	Lexemas: []adf.Lexema{
-		LexemaIdentificador,
+	Lexemas: []*adf.Lexema{
+		&LexemaIdentificador,
 	},
 }
 
-func init() {
+func InitADF() {
 	var r rune
 	var mapaId0 map[rune]*adf.Estado = make(map[rune]*adf.Estado)
 	var mapaId1 map[rune]*adf.Estado = make(map[rune]*adf.Estado)

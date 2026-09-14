@@ -6,16 +6,16 @@ import (
 
 var Literales = adf.Token{
 	Tipo: "Literales",
-	Lexemas: []adf.Lexema{
-		LexemaTrue,
-		LexemaFalse,
-		LexemaEntero,
-		LexemaFlotante,
-		LexemaCadena,
+	Lexemas: []*adf.Lexema{
+		&LexemaTrue,
+		&LexemaFalse,
+		&LexemaEntero,
+		&LexemaFlotante,
+		&LexemaCadena,
 	},
 }
 
-func init() {
+func InitADF() {
 	initNumeros()
 	initCadenas()
 }

@@ -18,11 +18,18 @@ func main() {
 		return
 	}
 
-	EscanearTokens(palabras, pr.PalabrasReservadas, lit.Literales, id.Identificadores)
+	tR := pr.PalabrasReservadas
+	tL := lit.Literales
+	tI := id.Identificadores
+
+	lit.InitADF()
+	id.InitADF()
+
+	EscanearTokens(palabras, tR, tL, tI)
 
 }
 
-func EscanearTokens(contenido []rune, tokenReservadas adf.Token, tokenLiterales adf.Token, tokenIdentificador adf.Token) {
+func EscanearTokens(contenido []rune, tR adf.Token, tL adf.Token, tI adf.Token) {
 	i := 0
 	n := len(contenido)
 
@@ -36,29 +43,27 @@ func EscanearTokens(contenido []rune, tokenReservadas adf.Token, tokenLiterales 
 		var mejorLexema *adf.Lexema
 		mejorLongitud := 0
 
-		// 1. Palabras Reservadas
-		lexRes, lenRes := tokenReservadas.EvaluarPrefijo(subslice)
+		lexRes, lenRes := tR.EvaluarPrefijo(subslice)
 		if lenRes > mejorLongitud {
 			mejorLongitud = lenRes
 			mejorLexema = lexRes
 		}
 
-		// 2. Literales
-		lexLit, lenLit := tokenLiterales.EvaluarPrefijo(subslice)
+		lexLit, lenLit := tL.EvaluarPrefijo(subslice)
 		if lenLit > mejorLongitud {
 			mejorLongitud = lenLit
 			mejorLexema = lexLit
 		}
 
-		// 3. Identificador (solo si supera en longitud a la palabra reservada)
-		lexId, lenId := tokenIdentificador.EvaluarPrefijo(subslice)
+		lexId, lenId := tI.EvaluarPrefijo(subslice)
 		if lenId > mejorLongitud {
 			mejorLongitud = lenId
 			mejorLexema = lexId
 		}
 
 		if mejorLongitud > 0 {
-			fmt.Println("Token:", mejorLexema.Token, "Lexema:", string(contenido[i:i+mejorLongitud]))
+			fmt.Println("Token:", mejorLexema.Token,
+				"Lexema:", string(contenido[i:i+mejorLongitud]))
 			i += mejorLongitud
 		} else {
 			fmt.Println("Caracteres no reconocidos:", string(contenido[i]))

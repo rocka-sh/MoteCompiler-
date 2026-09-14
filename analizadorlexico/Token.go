@@ -2,7 +2,7 @@ package analizadorlexico
 
 type Token struct {
 	Tipo    string
-	Lexemas []Lexema
+	Lexemas []*Lexema
 }
 
 func (t Token) EvaluarPrefijo(r []rune) (*Lexema, int) {
@@ -15,7 +15,7 @@ func (t Token) EvaluarPrefijo(r []rune) (*Lexema, int) {
 
 		if longitud > mejorLongitud {
 			mejorLongitud = longitud
-			mejorLexema = &lexema
+			mejorLexema = lexema
 		}
 	}
 
