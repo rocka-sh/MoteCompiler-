@@ -6,9 +6,9 @@ import (
 
 // [ (corchete abre)
 
-var LexemaCorcheteAbre = adf.Lexema{
-	QInicial: Q0CorcheteAbre,
-	Token:    "token_corchete_abre",
+var LexemaCorcheteAbre = adf.Token{
+	QInicial:    Q0CorcheteAbre,
+	NombreToken: "token_corchete_abre",
 }
 
 var Q1CorcheteAbre = adf.Estado{

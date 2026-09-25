@@ -2,9 +2,9 @@ package identificadores
 
 import adf "MoteCompiler/analizadorlexico"
 
-var Identificadores = adf.Token{
+var Identificadores = adf.Tokenario{
 	Tipo: "Identificador",
-	Lexemas: []*adf.Lexema{
+	Tokens: []*adf.Token{
 		&LexemaIdentificador,
 	},
 }
@@ -45,8 +45,8 @@ func InitADF() {
 		IsF:          false,
 	}
 
-	LexemaIdentificador = adf.Lexema{
-		QInicial: Q0,
-		Token:    "token_identificador",
+	LexemaIdentificador = adf.Token{
+		QInicial:    Q0,
+		NombreToken: "token_identificador",
 	}
 }

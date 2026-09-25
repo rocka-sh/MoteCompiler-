@@ -6,9 +6,9 @@ import (
 
 // } (llave cierra)
 
-var LexemaLlaveCierra = adf.Lexema{
-	QInicial: Q0LlaveCierra,
-	Token:    "token_llave_cierra",
+var LexemaLlaveCierra = adf.Token{
+	QInicial:    Q0LlaveCierra,
+	NombreToken: "token_llave_cierra",
 }
 
 var Q1LlaveCierra = adf.Estado{

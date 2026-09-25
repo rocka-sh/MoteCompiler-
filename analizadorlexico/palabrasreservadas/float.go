@@ -4,9 +4,9 @@ import (
 	adf "MoteCompiler/analizadorlexico"
 )
 
-var LexemaFloat = adf.Lexema{
-	QInicial: Q0Float,
-	Token:    "token_float",
+var LexemaFloat = adf.Token{
+	QInicial:    Q0Float,
+	NombreToken: "token_float",
 }
 
 var Q5Float = adf.Estado{

@@ -6,9 +6,9 @@ import (
 
 // <> (comparacion / diferente)
 
-var LexemaComparacion = adf.Lexema{
-	QInicial: Q0Comparacion,
-	Token:    "token_comparacion",
+var LexemaComparacion = adf.Token{
+	QInicial:    Q0Comparacion,
+	NombreToken: "token_comparacion",
 }
 
 var Q2Comparacion = adf.Estado{

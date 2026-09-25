@@ -6,9 +6,9 @@ import (
 
 // { (llave abre)
 
-var LexemaLlaveAbre = adf.Lexema{
-	QInicial: Q0LlaveAbre,
-	Token:    "token_llave_abre",
+var LexemaLlaveAbre = adf.Token{
+	QInicial:    Q0LlaveAbre,
+	NombreToken: "token_llave_abre",
 }
 
 var Q1LlaveAbre = adf.Estado{

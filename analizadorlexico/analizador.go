@@ -6,7 +6,8 @@ import (
 	"unicode"
 )
 
-func EscanearTokens(contenido []rune, tR Token, tL Token, tI Token, tO Token) {
+func EscanearTokens(contenido []rune, tR Tokenario, tL Tokenario, tI Tokenario, tO Tokenario) []Token {
+	var tokens []Token
 	i := 0
 	n := len(contenido)
 	linea := 1
@@ -30,26 +31,32 @@ func EscanearTokens(contenido []rune, tR Token, tL Token, tI Token, tO Token) {
 		validarErroresPrevios(contenido, i, linea, tL)
 
 		subslice := contenido[i:]
-		var mejorLexema *Lexema
+		var mejorToken *Token
 		mejorLongitud := 0
 
 		if lex, l := tR.EvaluarPrefijo(subslice); l > mejorLongitud {
-			mejorLongitud, mejorLexema = l, lex
+			mejorLongitud, mejorToken = l, lex
 		}
 		if lex, l := tO.EvaluarPrefijo(subslice); l > mejorLongitud {
-			mejorLongitud, mejorLexema = l, lex
+			mejorLongitud, mejorToken = l, lex
 		}
 		if lex, l := tL.EvaluarPrefijo(subslice); l > mejorLongitud {
-			mejorLongitud, mejorLexema = l, lex
+			mejorLongitud, mejorToken = l, lex
 		}
 		if lex, l := tI.EvaluarPrefijo(subslice); l > mejorLongitud {
-			mejorLongitud, mejorLexema = l, lex
+			mejorLongitud, mejorToken = l, lex
 		}
 
 		if mejorLongitud > 0 {
-			fmt.Println("Token:", mejorLexema.Token,
-				"Lexema:", string(contenido[i:i+mejorLongitud]))
-			validarErroresNumericos(contenido, i, mejorLongitud, mejorLexema, linea)
+			validarErroresNumericos(contenido, i, mejorLongitud, mejorToken, linea)
+			tok := Token{
+				QInicial:    mejorToken.QInicial,
+				NombreToken: mejorToken.NombreToken,
+				Lexema:      string(contenido[i : i+mejorLongitud]),
+				Linea:       linea,
+			}
+
+			tokens = append(tokens, tok)
 			i += mejorLongitud
 		} else {
 			fmt.Printf("Error lexico: caracter no reconocido: '%c' en linea %d\n", contenido[i], linea)
@@ -57,4 +64,6 @@ func EscanearTokens(contenido []rune, tR Token, tL Token, tI Token, tO Token) {
 			i++
 		}
 	}
+
+	return tokens
 }

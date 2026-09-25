@@ -8,7 +8,7 @@ import (
 	pr "MoteCompiler/analizadorlexico/palabrasreservadas"
 )
 
-func Lexico(contenido []rune) {
+func Lexico(contenido []rune) []adf.Token {
 	tR := pr.PalabrasReservadas
 	tL := lit.Literales
 	tI := id.Identificadores
@@ -17,5 +17,6 @@ func Lexico(contenido []rune) {
 	lit.InitADF()
 	id.InitADF()
 
-	adf.EscanearTokens(contenido, tR, tL, tI, tO)
+	return adf.EscanearTokens(contenido, tR, tL, tI, tO)
+
 }

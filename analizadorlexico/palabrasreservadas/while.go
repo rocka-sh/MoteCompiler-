@@ -4,9 +4,9 @@ import (
 	adf "MoteCompiler/analizadorlexico"
 )
 
-var LexemaWhile = adf.Lexema{
-	QInicial: Q0While,
-	Token:    "token_while",
+var LexemaWhile = adf.Token{
+	QInicial:    Q0While,
+	NombreToken: "token_while",
 }
 
 var Q5While = adf.Estado{

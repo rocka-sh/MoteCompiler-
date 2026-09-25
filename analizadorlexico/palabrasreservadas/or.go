@@ -4,9 +4,9 @@ import (
 	adf "MoteCompiler/analizadorlexico"
 )
 
-var LexemaOr = adf.Lexema{
-	QInicial: Q0Or,
-	Token:    "token_or",
+var LexemaOr = adf.Token{
+	QInicial:    Q0Or,
+	NombreToken: "token_or",
 }
 
 var Q2Or = adf.Estado{

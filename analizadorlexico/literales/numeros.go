@@ -4,8 +4,8 @@ import (
 	adf "MoteCompiler/analizadorlexico"
 )
 
-var LexemaEntero adf.Lexema
-var LexemaFlotante adf.Lexema
+var LexemaEntero adf.Token
+var LexemaFlotante adf.Token
 
 // GO NO PERMITE INICIALIZAR STRUCTS QUE SE LLAMEN A ELLOS MISMOS, POR ESO SE HACE EN EL INIT
 // PRINCIPALEMENTE PARA LOS NUMEROS, CADENAS E IDENTIFICADORES, YA QUE PUEDEN SER INFINITOS
@@ -29,9 +29,9 @@ func initNumeros() {
 		IsF:          false,
 	}
 
-	LexemaEntero = adf.Lexema{
-		QInicial: Q0E,
-		Token:    "token_entero",
+	LexemaEntero = adf.Token{
+		QInicial:    Q0E,
+		NombreToken: "token_entero",
 	}
 
 	// INICIALIZACION DE NUMEROS PARA FLOTANTES
@@ -72,8 +72,8 @@ func initNumeros() {
 		IsF:          false,
 	}
 
-	LexemaFlotante = adf.Lexema{
-		QInicial: Q0F,
-		Token:    "token_flotante",
+	LexemaFlotante = adf.Token{
+		QInicial:    Q0F,
+		NombreToken: "token_flotante",
 	}
 }

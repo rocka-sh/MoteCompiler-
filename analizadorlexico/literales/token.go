@@ -4,9 +4,9 @@ import (
 	adf "MoteCompiler/analizadorlexico"
 )
 
-var Literales = adf.Token{
+var Literales = adf.Tokenario{
 	Tipo: "literales",
-	Lexemas: []*adf.Lexema{
+	Tokens: []*adf.Token{
 		&LexemaTrue,
 		&LexemaFalse,
 		&LexemaEntero,

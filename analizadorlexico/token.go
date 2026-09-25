@@ -1,23 +1,31 @@
 package analizadorlexico
 
 type Token struct {
-	Tipo    string
-	Lexemas []*Lexema
+	QInicial    Estado
+	NombreToken string
+	Lexema      string
+	Linea       int
 }
 
-func (t Token) EvaluarPrefijo(r []rune) (*Lexema, int) {
-	var mejorLongitud int = 0
-	var mejorLexema *Lexema = nil
+func (l *Token) D(r []rune) int {
+	q := &l.QInicial
 
-	for _, lexema := range t.Lexemas {
-		var longitud int
-		longitud = lexema.D(r)
+	var longitudMax int = 0
+	var acumulado int = 0
 
-		if longitud > mejorLongitud {
-			mejorLongitud = longitud
-			mejorLexema = lexema
+	for _, v := range r {
+		siguienteEstado := q.d(v)
+
+		if siguienteEstado == nil {
+			break
+		}
+		acumulado++
+		q = siguienteEstado
+
+		if q.IsF {
+			longitudMax = acumulado
 		}
 	}
 
-	return mejorLexema, mejorLongitud
+	return longitudMax
 }

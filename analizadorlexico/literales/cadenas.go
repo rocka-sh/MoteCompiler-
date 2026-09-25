@@ -4,7 +4,7 @@ import (
 	adf "MoteCompiler/analizadorlexico"
 )
 
-var LexemaCadena adf.Lexema
+var LexemaCadena adf.Token
 
 func initCadenas() {
 	Q2 := &adf.Estado{
@@ -32,8 +32,8 @@ func initCadenas() {
 		IsF: false,
 	}
 
-	LexemaCadena = adf.Lexema{
-		QInicial: Q0,
-		Token:    "token_cadena",
+	LexemaCadena = adf.Token{
+		QInicial:    Q0,
+		NombreToken: "token_cadena",
 	}
 }

@@ -6,9 +6,9 @@ import (
 
 // <= (menor o igual)
 
-var LexemaMenorIgual = adf.Lexema{
-	QInicial: Q0MenorIgual,
-	Token:    "token_menor_igual",
+var LexemaMenorIgual = adf.Token{
+	QInicial:    Q0MenorIgual,
+	NombreToken: "token_menor_igual",
 }
 
 var Q2MenorIgual = adf.Estado{

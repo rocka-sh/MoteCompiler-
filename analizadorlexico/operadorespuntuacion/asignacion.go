@@ -6,9 +6,9 @@ import (
 
 // := (asignacion)
 
-var LexemaAsignacion = adf.Lexema{
-	QInicial: Q0Asignacion,
-	Token:    "token_asignacion",
+var LexemaAsignacion = adf.Token{
+	QInicial:    Q0Asignacion,
+	NombreToken: "token_asignacion",
 }
 
 var Q2Asignacion = adf.Estado{

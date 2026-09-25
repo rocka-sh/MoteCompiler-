@@ -4,9 +4,9 @@ import (
 	adf "MoteCompiler/analizadorlexico"
 )
 
-var PalabrasReservadas = adf.Token{
+var PalabrasReservadas = adf.Tokenario{
 	Tipo: "palabra_reservada",
-	Lexemas: []*adf.Lexema{
+	Tokens: []*adf.Token{
 		&LexemaAnd,
 		&LexemaBool,
 		&LexemaInt,

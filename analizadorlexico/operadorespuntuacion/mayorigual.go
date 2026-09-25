@@ -6,9 +6,9 @@ import (
 
 // >= (mayor o igual)
 
-var LexemaMayorIgual = adf.Lexema{
-	QInicial: Q0MayorIgual,
-	Token:    "token_mayor_igual",
+var LexemaMayorIgual = adf.Token{
+	QInicial:    Q0MayorIgual,
+	NombreToken: "token_mayor_igual",
 }
 
 var Q2MayorIgual = adf.Estado{

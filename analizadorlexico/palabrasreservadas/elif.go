@@ -4,9 +4,9 @@ import (
 	adf "MoteCompiler/analizadorlexico"
 )
 
-var LexemaElif = adf.Lexema{
-	QInicial: Q0Elif,
-	Token:    "token_elif",
+var LexemaElif = adf.Token{
+	QInicial:    Q0Elif,
+	NombreToken: "token_elif",
 }
 
 var Q4Elif = adf.Estado{

@@ -6,9 +6,9 @@ import (
 
 // / (division)
 
-var LexemaDivision = adf.Lexema{
-	QInicial: Q0Division,
-	Token:    "token_division",
+var LexemaDivision = adf.Token{
+	QInicial:    Q0Division,
+	NombreToken: "token_division",
 }
 
 var Q1Division = adf.Estado{

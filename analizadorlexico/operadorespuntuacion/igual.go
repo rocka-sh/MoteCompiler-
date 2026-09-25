@@ -6,9 +6,9 @@ import (
 
 // = (igual)
 
-var LexemaIgual = adf.Lexema{
-	QInicial: Q0Igual,
-	Token:    "token_igual",
+var LexemaIgual = adf.Token{
+	QInicial:    Q0Igual,
+	NombreToken: "token_igual",
 }
 
 var Q1Igual = adf.Estado{

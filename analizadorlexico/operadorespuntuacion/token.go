@@ -4,9 +4,9 @@ import (
 	adf "MoteCompiler/analizadorlexico"
 )
 
-var OperadoresPuntuacion = adf.Token{
+var OperadoresPuntuacion = adf.Tokenario{
 	Tipo: "operador/puntuacion",
-	Lexemas: []*adf.Lexema{
+	Tokens: []*adf.Token{
 		&LexemaAsignacion,
 		&LexemaIgual,
 		&LexemaComparacion,
