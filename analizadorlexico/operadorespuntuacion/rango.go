@@ -8,7 +8,7 @@ import (
 
 var LexemaRango = adf.Lexema{
 	QInicial: Q0Rango,
-	Token:    "rango",
+	Token:    "token_rango",
 }
 
 var Q2Rango = adf.Estado{

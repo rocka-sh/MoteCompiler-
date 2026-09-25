@@ -34,6 +34,6 @@ func initCadenas() {
 
 	LexemaCadena = adf.Lexema{
 		QInicial: Q0,
-		Token:    "literal_cadena",
+		Token:    "token_cadena",
 	}
 }

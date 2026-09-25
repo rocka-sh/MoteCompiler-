@@ -8,7 +8,7 @@ import (
 
 var LexemaModulo = adf.Lexema{
 	QInicial: Q0Modulo,
-	Token:    "modulo",
+	Token:    "token_modulo",
 }
 
 var Q1Modulo = adf.Estado{

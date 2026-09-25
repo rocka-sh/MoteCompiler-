@@ -6,7 +6,7 @@ import (
 
 var LexemaBool = adf.Lexema{
 	QInicial: Q0Bool,
-	Token:    "palabra_reservada",
+	Token:    "token_bool",
 }
 
 var Q4Bool = adf.Estado{

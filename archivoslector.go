@@ -1,4 +1,4 @@
-package analizadorlexico
+package main
 
 import (
 	"bufio"
