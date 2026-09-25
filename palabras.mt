@@ -18,4 +18,3 @@ fn main(): int
     end
     print(total)
     
-	let cadena: string := "cadena sin cerrar

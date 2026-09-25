@@ -7,7 +7,7 @@ import (
 )
 
 func EscanearTokens(contenido []rune, tR Tokenario, tL Tokenario, tI Tokenario, tO Tokenario) []Token {
-	var tokens []Token
+	tokens := make([]Token, 0)
 	i := 0
 	n := len(contenido)
 	linea := 1
@@ -64,6 +64,13 @@ func EscanearTokens(contenido []rune, tR Tokenario, tL Tokenario, tI Tokenario, 
 			i++
 		}
 	}
+
+	tokEOF := Token{
+		NombreToken: "TOKEN_EOF",
+		Lexema:      "",
+		Linea:       linea,
+	}
+	tokens = append(tokens, tokEOF)
 
 	return tokens
 }

@@ -12,5 +12,9 @@ func main() {
 		fmt.Printf("No se pudo abrir el archivo")
 	}
 
-	Lexico(palabras)
+	tokens := Lexico(palabras)
+	for _, v := range tokens {
+		fmt.Println(v.NombreToken)
+
+	}
 }
