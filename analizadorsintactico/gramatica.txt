@@ -1,0 +1,24 @@
+//e = epsilon o cadena vacia 
+
+Program = Declaration
+Declaration = Fn | Var | Record
+
+Var = VarKw Id ":" Type VarAssig
+VarKw = "let" | "var" 
+VarAssig = ":=" Expr | e  
+
+Record = "record" Id Field "end"
+Field = Param ParamT
+
+Fn = "fn" Id "(" ParamList ")" ":" TypeFun Block "end"
+ParamList = Param ParamT | e
+ParamT = "," Param ParamT | e
+Param = Id : Type
+TypeFun = Type | e
+
+Type = "int" | "float" | "string" | "bool" | ArrType Type | Ident 
+ArrType = "[" IntLiteral "]" | e 
+
+Block = Statement | e
+Statement = Var | Assignment| IfStmt | WhileStmt | ForStmt 
+| ReturnStmt | PrintStmt | ExprStmt
