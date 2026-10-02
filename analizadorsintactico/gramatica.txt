@@ -1,24 +1,90 @@
-//e = epsilon o cadena vacia 
+// e = epsilon (cadena vacía)
 
-Program = Declaration
-Declaration = Fn | Var | Record
+Program = DeclarationList
+DeclarationList = Declaration DeclarationList | e
+Declaration = Fn | Var | Record 
 
 Var = VarKw Id ":" Type VarAssig
 VarKw = "let" | "var" 
 VarAssig = ":=" Expr | e  
 
-Record = "record" Id Field "end"
-Field = Param ParamT
+Record = "record" Id FieldList "end"
+FieldList = FieldDecl FieldList | e
+FieldDecl = Id ":" Type
 
-Fn = "fn" Id "(" ParamList ")" ":" TypeFun Block "end"
+Fn = "fn" Id "(" ParamList ")" TypeFun Block "end"
+TypeFun = ":" Type | e
+
 ParamList = Param ParamT | e
 ParamT = "," Param ParamT | e
-Param = Id : Type
-TypeFun = Type | e
+Param = Id ":" Type
 
-Type = "int" | "float" | "string" | "bool" | ArrType Type | Ident 
-ArrType = "[" IntLiteral "]" | e 
+Type = "int" | "float" | "string" | "bool" | ArrayType | Id 
+ArrayType = "[" IntLiteral "]" Type
 
-Block = Statement | e
-Statement = Var | Assignment| IfStmt | WhileStmt | ForStmt 
-| ReturnStmt | PrintStmt | ExprStmt
+Block = StatementList
+StatementList = Statement StatementList | e
+
+Statement = Var | IfStmt | WhileStmt | ForStmt | ReturnStmt | PrintStmt | StmtStartId
+
+StmtStartId = Id StmtIdTail
+StmtIdTail = ValueList AssignOpt | PrimaryIdentOpt ExprTail
+	
+AssignOpt = ":=" Expr
+LValue = Id ValueList
+ValueList = Value ValueList | e
+Value = "[" Expr "]" | "." Id 
+
+IfStmt = "if" Expr "then" Block ElifList ElseOpt "end"
+ElifList = ElifClause ElifList | e
+ElifClause = "elif" Expr "then" Block 
+ElseOpt = "else" Block | e
+
+WhileStmt = "while" Expr "do" Block "end"
+ForStmt = "for" Id "in" Expr ".." Expr "do" Block "end"
+ReturnStmt = "return" OptExpr
+OptExpr = Expr | e
+PrintStmt = "print" "(" Expr ")"
+ExprStmt = Expr
+
+Expr = OrExpr
+
+OrExpr = AndExpr OrExprT
+OrExprT = "or" AndExpr OrExprT | e
+
+AndExpr = NotExpr AndExprT
+AndExprT = "and" NotExpr AndExprT | e
+
+NotExpr = "not" NotExpr | Comparison
+
+Comparison = Additive ComparisonOpt
+ComparisonOpt = CompOp Additive | e
+CompOp = "=" | "<>" | "<" | "<=" | ">" | ">="
+
+Additive = Multiplicative AdditiveT
+AdditiveT = AddOp Multiplicative AdditiveT | e
+AddOp = "+" | "-"
+
+Multiplicative = Unary MultiplicativeT
+MultiplicativeT = MultOp Unary MultiplicativeT | e
+MultOp = "*" | "/" | "%"
+
+Unary = "-" Unary | Primary
+
+Primary = IntLiteral 
+        | FloatLiteral 
+        | StringLiteral
+        | "true" 
+        | "false"
+        | PrimaryIdent
+        | ArrayLiteral
+        | "(" Expr ")"
+
+PrimaryIdent = Id PrimaryIdentOpt
+PrimaryIdentOpt = "(" OptArgList ")" | ValueList
+
+ArrayLiteral = "[" OptArgList "]"
+
+OptArgList = ArgList | e
+ArgList = Expr ArgListT
+ArgListT = "," Expr ArgListT | e
