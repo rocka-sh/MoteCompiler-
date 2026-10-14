@@ -1,0 +1,59 @@
+// ==========================================
+// CONJUNTOS PRIMEROS (FIRST)
+// Total de No Terminales: 54
+// ==========================================
+
+PRIMERO(Program) = { "fn", "let", "record", "var", e }
+PRIMERO(DeclarationList) = { "fn", "let", "record", "var", e }
+PRIMERO(Declaration) = { "fn", "let", "record", "var" }
+PRIMERO(Var) = { "let", "var" }
+PRIMERO(VarKw) = { "let", "var" }
+PRIMERO(VarAssig) = { ":=", e }
+PRIMERO(Record) = { "record" }
+PRIMERO(FieldList) = { Id, e }
+PRIMERO(FieldDecl) = { Id }
+PRIMERO(Fn) = { "fn" }
+PRIMERO(TypeFun) = { ":", e }
+PRIMERO(ParamList) = { Id, e }
+PRIMERO(ParamT) = { ",", e }
+PRIMERO(Param) = { Id }
+PRIMERO(Type) = { "[", "bool", "float", "int", "string", Id }
+PRIMERO(ArrayType) = { "[" }
+PRIMERO(Block) = { "for", "if", "let", "print", "return", "var", "while", Id, e }
+PRIMERO(StatementList) = { "for", "if", "let", "print", "return", "var", "while", Id, e }
+PRIMERO(Statement) = { "for", "if", "let", "print", "return", "var", "while", Id }
+PRIMERO(StmtStartId) = { Id }
+PRIMERO(StmtIdTail) = { "(", ".", ":=", "[" }
+PRIMERO(ValueList) = { ".", "[", e }
+PRIMERO(Value) = { ".", "[" }
+PRIMERO(IfStmt) = { "if" }
+PRIMERO(ElifList) = { "elif", e }
+PRIMERO(ElifClause) = { "elif" }
+PRIMERO(ElseOpt) = { "else", e }
+PRIMERO(WhileStmt) = { "while" }
+PRIMERO(ForStmt) = { "for" }
+PRIMERO(ReturnStmt) = { "return" }
+PRIMERO(PrintStmt) = { "print" }
+PRIMERO(Expr) = { "(", "-", "[", "false", "not", "true", FloatLiteral, Id, IntLiteral, StringLiteral }
+PRIMERO(OrExpr) = { "(", "-", "[", "false", "not", "true", FloatLiteral, Id, IntLiteral, StringLiteral }
+PRIMERO(OrExprT) = { "or", e }
+PRIMERO(AndExpr) = { "(", "-", "[", "false", "not", "true", FloatLiteral, Id, IntLiteral, StringLiteral }
+PRIMERO(AndExprT) = { "and", e }
+PRIMERO(NotExpr) = { "(", "-", "[", "false", "not", "true", FloatLiteral, Id, IntLiteral, StringLiteral }
+PRIMERO(Comparison) = { "(", "-", "[", "false", "true", FloatLiteral, Id, IntLiteral, StringLiteral }
+PRIMERO(ComparisonOpt) = { "<", "<=", "<>", "=", ">", ">=", e }
+PRIMERO(CompOp) = { "<", "<=", "<>", "=", ">", ">=" }
+PRIMERO(Additive) = { "(", "-", "[", "false", "true", FloatLiteral, Id, IntLiteral, StringLiteral }
+PRIMERO(AdditiveT) = { "+", "-", e }
+PRIMERO(AddOp) = { "+", "-" }
+PRIMERO(Multiplicative) = { "(", "-", "[", "false", "true", FloatLiteral, Id, IntLiteral, StringLiteral }
+PRIMERO(MultiplicativeT) = { "%", "*", "/", e }
+PRIMERO(MultOp) = { "%", "*", "/" }
+PRIMERO(Unary) = { "(", "-", "[", "false", "true", FloatLiteral, Id, IntLiteral, StringLiteral }
+PRIMERO(Primary) = { "(", "[", "false", "true", FloatLiteral, Id, IntLiteral, StringLiteral }
+PRIMERO(PrimaryIdent) = { Id }
+PRIMERO(PrimaryIdentOpt) = { "(", ".", "[", e }
+PRIMERO(ArrayLiteral) = { "[" }
+PRIMERO(OptArgList) = { "(", "-", "[", "false", "not", "true", FloatLiteral, Id, IntLiteral, StringLiteral, e }
+PRIMERO(ArgList) = { "(", "-", "[", "false", "not", "true", FloatLiteral, Id, IntLiteral, StringLiteral }
+PRIMERO(ArgListT) = { ",", e }

@@ -1,0 +1,58 @@
+// ==========================================
+// SIMBOLOS TERMINALES DE LA GRAMATICA
+// Total: 48
+// ==========================================
+
+// --- Tokens Complejos / Identificadores y Literales ---
+FloatLiteral
+Id
+IntLiteral
+StringLiteral
+
+// --- Palabras Reservadas ---
+"and"
+"bool"
+"do"
+"elif"
+"else"
+"end"
+"false"
+"float"
+"fn"
+"for"
+"if"
+"in"
+"int"
+"let"
+"not"
+"or"
+"print"
+"record"
+"return"
+"string"
+"then"
+"true"
+"var"
+"while"
+
+// --- Operadores y Puntuacion ---
+"%"
+"("
+")"
+"*"
+"+"
+","
+"-"
+"."
+".."
+"/"
+":"
+":="
+"<"
+"<="
+"<>"
+"="
+">"
+">="
+"["
+"]"

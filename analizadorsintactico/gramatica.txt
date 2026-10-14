@@ -28,10 +28,8 @@ StatementList = Statement StatementList | e
 Statement = Var | IfStmt | WhileStmt | ForStmt | ReturnStmt | PrintStmt | StmtStartId
 
 StmtStartId = Id StmtIdTail
-StmtIdTail = ValueList AssignOpt | PrimaryIdentOpt ExprTail
-	
-AssignOpt = ":=" Expr
-LValue = Id ValueList
+StmtIdTail = "(" OptArgList ")" | ValueList ":=" Expr
+
 ValueList = Value ValueList | e
 Value = "[" Expr "]" | "." Id 
 
@@ -42,10 +40,8 @@ ElseOpt = "else" Block | e
 
 WhileStmt = "while" Expr "do" Block "end"
 ForStmt = "for" Id "in" Expr ".." Expr "do" Block "end"
-ReturnStmt = "return" OptExpr
-OptExpr = Expr | e
+ReturnStmt = "return" Expr
 PrintStmt = "print" "(" Expr ")"
-ExprStmt = Expr
 
 Expr = OrExpr
 

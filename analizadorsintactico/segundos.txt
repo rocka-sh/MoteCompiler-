@@ -1,0 +1,60 @@
+// ==========================================
+// CONJUNTOS SIGUIENTES / SEGUNDOS (FOLLOW)
+// Total de No Terminales: 54
+// Nota: $ representa el fin de archivo (TOKEN_EOF)
+// ==========================================
+
+SIGUIENTE(Program) = { $ }
+SIGUIENTE(DeclarationList) = { $ }
+SIGUIENTE(Declaration) = { "fn", "let", "record", "var", $ }
+SIGUIENTE(Var) = { "elif", "else", "end", "fn", "for", "if", "let", "print", "record", "return", "var", "while", $, Id }
+SIGUIENTE(VarKw) = { Id }
+SIGUIENTE(VarAssig) = { "elif", "else", "end", "fn", "for", "if", "let", "print", "record", "return", "var", "while", $, Id }
+SIGUIENTE(Record) = { "fn", "let", "record", "var", $ }
+SIGUIENTE(FieldList) = { "end" }
+SIGUIENTE(FieldDecl) = { "end", Id }
+SIGUIENTE(Fn) = { "fn", "let", "record", "var", $ }
+SIGUIENTE(TypeFun) = { "end", "for", "if", "let", "print", "return", "var", "while", Id }
+SIGUIENTE(ParamList) = { ")" }
+SIGUIENTE(ParamT) = { ")" }
+SIGUIENTE(Param) = { ")", "," }
+SIGUIENTE(Type) = { ")", ",", ":=", "elif", "else", "end", "fn", "for", "if", "let", "print", "record", "return", "var", "while", $, Id }
+SIGUIENTE(ArrayType) = { ")", ",", ":=", "elif", "else", "end", "fn", "for", "if", "let", "print", "record", "return", "var", "while", $, Id }
+SIGUIENTE(Block) = { "elif", "else", "end" }
+SIGUIENTE(StatementList) = { "elif", "else", "end" }
+SIGUIENTE(Statement) = { "elif", "else", "end", "for", "if", "let", "print", "return", "var", "while", Id }
+SIGUIENTE(StmtStartId) = { "elif", "else", "end", "for", "if", "let", "print", "return", "var", "while", Id }
+SIGUIENTE(StmtIdTail) = { "elif", "else", "end", "for", "if", "let", "print", "return", "var", "while", Id }
+SIGUIENTE(ValueList) = { "%", ")", "*", "+", ",", "-", "..", "/", ":=", "<", "<=", "<>", "=", ">", ">=", "]", "and", "do", "elif", "else", "end", "fn", "for", "if", "let", "or", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(Value) = { "%", ")", "*", "+", ",", "-", ".", "..", "/", ":=", "<", "<=", "<>", "=", ">", ">=", "[", "]", "and", "do", "elif", "else", "end", "fn", "for", "if", "let", "or", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(IfStmt) = { "elif", "else", "end", "for", "if", "let", "print", "return", "var", "while", Id }
+SIGUIENTE(ElifList) = { "else", "end" }
+SIGUIENTE(ElifClause) = { "elif", "else", "end" }
+SIGUIENTE(ElseOpt) = { "end" }
+SIGUIENTE(WhileStmt) = { "elif", "else", "end", "for", "if", "let", "print", "return", "var", "while", Id }
+SIGUIENTE(ForStmt) = { "elif", "else", "end", "for", "if", "let", "print", "return", "var", "while", Id }
+SIGUIENTE(ReturnStmt) = { "elif", "else", "end", "for", "if", "let", "print", "return", "var", "while", Id }
+SIGUIENTE(PrintStmt) = { "elif", "else", "end", "for", "if", "let", "print", "return", "var", "while", Id }
+SIGUIENTE(Expr) = { ")", ",", "..", "]", "do", "elif", "else", "end", "fn", "for", "if", "let", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(OrExpr) = { ")", ",", "..", "]", "do", "elif", "else", "end", "fn", "for", "if", "let", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(OrExprT) = { ")", ",", "..", "]", "do", "elif", "else", "end", "fn", "for", "if", "let", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(AndExpr) = { ")", ",", "..", "]", "do", "elif", "else", "end", "fn", "for", "if", "let", "or", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(AndExprT) = { ")", ",", "..", "]", "do", "elif", "else", "end", "fn", "for", "if", "let", "or", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(NotExpr) = { ")", ",", "..", "]", "and", "do", "elif", "else", "end", "fn", "for", "if", "let", "or", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(Comparison) = { ")", ",", "..", "]", "and", "do", "elif", "else", "end", "fn", "for", "if", "let", "or", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(ComparisonOpt) = { ")", ",", "..", "]", "and", "do", "elif", "else", "end", "fn", "for", "if", "let", "or", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(CompOp) = { "(", "-", "[", "false", "true", FloatLiteral, Id, IntLiteral, StringLiteral }
+SIGUIENTE(Additive) = { ")", ",", "..", "<", "<=", "<>", "=", ">", ">=", "]", "and", "do", "elif", "else", "end", "fn", "for", "if", "let", "or", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(AdditiveT) = { ")", ",", "..", "<", "<=", "<>", "=", ">", ">=", "]", "and", "do", "elif", "else", "end", "fn", "for", "if", "let", "or", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(AddOp) = { "(", "-", "[", "false", "true", FloatLiteral, Id, IntLiteral, StringLiteral }
+SIGUIENTE(Multiplicative) = { ")", "+", ",", "-", "..", "<", "<=", "<>", "=", ">", ">=", "]", "and", "do", "elif", "else", "end", "fn", "for", "if", "let", "or", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(MultiplicativeT) = { ")", "+", ",", "-", "..", "<", "<=", "<>", "=", ">", ">=", "]", "and", "do", "elif", "else", "end", "fn", "for", "if", "let", "or", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(MultOp) = { "(", "-", "[", "false", "true", FloatLiteral, Id, IntLiteral, StringLiteral }
+SIGUIENTE(Unary) = { "%", ")", "*", "+", ",", "-", "..", "/", "<", "<=", "<>", "=", ">", ">=", "]", "and", "do", "elif", "else", "end", "fn", "for", "if", "let", "or", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(Primary) = { "%", ")", "*", "+", ",", "-", "..", "/", "<", "<=", "<>", "=", ">", ">=", "]", "and", "do", "elif", "else", "end", "fn", "for", "if", "let", "or", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(PrimaryIdent) = { "%", ")", "*", "+", ",", "-", "..", "/", "<", "<=", "<>", "=", ">", ">=", "]", "and", "do", "elif", "else", "end", "fn", "for", "if", "let", "or", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(PrimaryIdentOpt) = { "%", ")", "*", "+", ",", "-", "..", "/", "<", "<=", "<>", "=", ">", ">=", "]", "and", "do", "elif", "else", "end", "fn", "for", "if", "let", "or", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(ArrayLiteral) = { "%", ")", "*", "+", ",", "-", "..", "/", "<", "<=", "<>", "=", ">", ">=", "]", "and", "do", "elif", "else", "end", "fn", "for", "if", "let", "or", "print", "record", "return", "then", "var", "while", $, Id }
+SIGUIENTE(OptArgList) = { ")", "]" }
+SIGUIENTE(ArgList) = { ")", "]" }
+SIGUIENTE(ArgListT) = { ")", "]" }
