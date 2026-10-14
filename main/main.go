@@ -13,8 +13,5 @@ func main() {
 	}
 
 	tokens := Lexico(palabras)
-	for _, v := range tokens {
-		fmt.Println(v.NombreToken)
-
-	}
+	Sintactico(tokens)
 }

@@ -23,6 +23,8 @@ func (p *Parser) ParseStatementList() {
 	case "elif", "else", "end":
 		// e (epsilon)
 		return
+	case "$":
+		p.errorSintactico("fin de archivo inesperado, falta un 'end'", p.tokenActual().Linea)
 	default:
 		p.errorInesperado()
 	}

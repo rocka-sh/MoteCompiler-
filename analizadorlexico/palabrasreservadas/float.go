@@ -6,7 +6,7 @@ import (
 
 var LexemaFloat = adf.Token{
 	QInicial:    Q0Float,
-	NombreToken: "token_float",
+	NombreToken: "float",
 }
 
 var Q5Float = adf.Estado{

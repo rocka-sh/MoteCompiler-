@@ -46,6 +46,9 @@ func (p *Parser) ParseParamT() {
 	switch p.tokenActual().NombreToken {
 	case ",":
 		p.Match(",")
+		if p.tokenActual().NombreToken == ")" {
+			p.errorSintactico("coma final sobrante en lista de parámetros", p.tokenActual().Linea)
+		}
 		p.ParseParam()
 		p.ParseParamT()
 	case ")":

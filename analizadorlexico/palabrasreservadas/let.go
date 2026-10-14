@@ -6,7 +6,7 @@ import (
 
 var LexemaLet = adf.Token{
 	QInicial:    Q0Let,
-	NombreToken: "token_let",
+	NombreToken: "let",
 }
 
 var Q3Let = adf.Estado{

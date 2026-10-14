@@ -6,7 +6,7 @@ import (
 
 var LexemaWhile = adf.Token{
 	QInicial:    Q0While,
-	NombreToken: "token_while",
+	NombreToken: "while",
 }
 
 var Q5While = adf.Estado{

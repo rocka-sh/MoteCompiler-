@@ -66,7 +66,7 @@ func EscanearTokens(contenido []rune, tR Tokenario, tL Tokenario, tI Tokenario, 
 	}
 
 	tokEOF := Token{
-		NombreToken: "TOKEN_EOF",
+		NombreToken: "$",
 		Lexema:      "",
 		Linea:       linea,
 	}

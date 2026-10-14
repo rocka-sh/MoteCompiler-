@@ -28,5 +28,6 @@ var OperadoresPuntuacion = adf.Tokenario{
 		&LexemaComa,
 		&LexemaDosPuntos,
 		&LexemaRango,
+		&LexemaPunto,
 	},
 }

@@ -31,7 +31,7 @@ func initNumeros() {
 
 	LexemaEntero = adf.Token{
 		QInicial:    Q0E,
-		NombreToken: "token_entero",
+		NombreToken: "IntLiteral",
 	}
 
 	// INICIALIZACION DE NUMEROS PARA FLOTANTES
@@ -74,6 +74,6 @@ func initNumeros() {
 
 	LexemaFlotante = adf.Token{
 		QInicial:    Q0F,
-		NombreToken: "token_flotante",
+		NombreToken: "FloatLiteral",
 	}
 }

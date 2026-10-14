@@ -17,4 +17,3 @@ fn main(): int
         total := total + nums[i]
     end
     print(total)
-    

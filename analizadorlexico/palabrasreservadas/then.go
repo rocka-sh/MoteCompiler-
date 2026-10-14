@@ -6,7 +6,7 @@ import (
 
 var LexemaThen = adf.Token{
 	QInicial:    Q0Then,
-	NombreToken: "token_then",
+	NombreToken: "then",
 }
 
 var Q4Then = adf.Estado{

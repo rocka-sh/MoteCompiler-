@@ -20,6 +20,8 @@ func (p *Parser) ParseFieldList() {
 	case "end":
 		// e (epsilon)
 		return
+	case "$":
+		p.errorSintactico("fin de archivo inesperado, falta un 'end' para cerrar el record", p.tokenActual().Linea)
 	default:
 		p.errorInesperado()
 	}

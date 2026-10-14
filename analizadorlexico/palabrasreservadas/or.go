@@ -6,7 +6,7 @@ import (
 
 var LexemaOr = adf.Token{
 	QInicial:    Q0Or,
-	NombreToken: "token_or",
+	NombreToken: "or",
 }
 
 var Q2Or = adf.Estado{

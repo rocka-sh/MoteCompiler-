@@ -6,7 +6,7 @@ import (
 
 var LexemaNot = adf.Token{
 	QInicial:    Q0Not,
-	NombreToken: "token_not",
+	NombreToken: "not",
 }
 
 var Q3Not = adf.Estado{

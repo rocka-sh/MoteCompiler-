@@ -17,6 +17,8 @@ func (p *Parser) ParseDeclarationList() {
 	case "$":
 		// e (epsilon)
 		return
+	case "if", "while", "for", "return", "print":
+		p.errorSintactico("las sentencias ejecutables deben estar dentro de una función", p.tokenActual().Linea)
 	default:
 		p.errorInesperado()
 	}

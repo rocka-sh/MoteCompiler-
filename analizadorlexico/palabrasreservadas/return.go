@@ -6,7 +6,7 @@ import (
 
 var LexemaReturn = adf.Token{
 	QInicial:    Q0Return,
-	NombreToken: "token_return",
+	NombreToken: "return",
 }
 
 var Q6Return = adf.Estado{

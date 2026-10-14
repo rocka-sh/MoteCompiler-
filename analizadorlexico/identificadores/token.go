@@ -47,6 +47,6 @@ func InitADF() {
 
 	LexemaIdentificador = adf.Token{
 		QInicial:    Q0,
-		NombreToken: "token_identificador",
+		NombreToken: "Id",
 	}
 }

@@ -8,7 +8,7 @@ import (
 
 var LexemaParentesisCierra = adf.Token{
 	QInicial:    Q0ParentesisCierra,
-	NombreToken: "token_parentesis_cierra",
+	NombreToken: ")",
 }
 
 var Q1ParentesisCierra = adf.Estado{

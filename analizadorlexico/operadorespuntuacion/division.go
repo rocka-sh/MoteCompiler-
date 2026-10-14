@@ -8,7 +8,7 @@ import (
 
 var LexemaDivision = adf.Token{
 	QInicial:    Q0Division,
-	NombreToken: "token_division",
+	NombreToken: "/",
 }
 
 var Q1Division = adf.Estado{

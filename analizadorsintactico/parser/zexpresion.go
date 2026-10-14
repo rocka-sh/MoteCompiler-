@@ -180,6 +180,8 @@ func (p *Parser) ParsePrimary() {
 		p.Match("(")
 		p.ParseExpr()
 		p.Match(")")
+	case "+", "*", "/", "%", "=", "<>", "<", "<=", ">", ">=", "and", "or":
+		p.errorSintactico("operador duplicado o falta de operando en la expresión", p.tokenActual().Linea)
 	default:
 		p.errorInesperado()
 	}
@@ -228,6 +230,9 @@ func (p *Parser) ParseArgListT() {
 	switch p.tokenActual().NombreToken {
 	case ",":
 		p.Match(",")
+		if p.tokenActual().NombreToken == ")" || p.tokenActual().NombreToken == "]" {
+			p.errorSintactico("coma final sobrante en lista de argumentos", p.tokenActual().Linea)
+		}
 		p.ParseExpr()
 		p.ParseArgListT()
 	case ")", "]":

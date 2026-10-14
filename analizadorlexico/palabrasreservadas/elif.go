@@ -6,7 +6,7 @@ import (
 
 var LexemaElif = adf.Token{
 	QInicial:    Q0Elif,
-	NombreToken: "token_elif",
+	NombreToken: "elif",
 }
 
 var Q4Elif = adf.Estado{

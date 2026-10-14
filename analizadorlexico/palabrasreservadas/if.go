@@ -6,7 +6,7 @@ import (
 
 var LexemaIf = adf.Token{
 	QInicial:    Q0If,
-	NombreToken: "token_if",
+	NombreToken: "if",
 }
 
 var Q2If = adf.Estado{

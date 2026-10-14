@@ -6,7 +6,7 @@ import (
 
 var LexemaDo = adf.Token{
 	QInicial:    Q0Do,
-	NombreToken: "token_do",
+	NombreToken: "do",
 }
 
 var Q2Do = adf.Estado{
