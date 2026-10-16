@@ -1,10 +1,5 @@
 package parser
 
-// Reglas en gramática:
-// Var = VarKw Id ":" Type VarAssig
-// VarKw = "let" | "var"
-// VarAssig = ":=" Expr | e
-
 func (p *Parser) ParseVar() {
 	p.ParseVarKw()
 	p.Match("Id")

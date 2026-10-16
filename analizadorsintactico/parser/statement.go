@@ -1,16 +1,5 @@
 package parser
 
-// Reglas en gramática:
-// Block = StatementList
-// StatementList = Statement StatementList | e
-// Statement = Var | IfStmt | WhileStmt | ForStmt | ReturnStmt | PrintStmt | StmtStartId
-// StmtStartId = Id StmtIdTail
-// StmtIdTail = "(" OptArgList ")" | ValueList ":=" Expr
-// ValueList = Value ValueList | e
-// Value = "[" Expr "]" | "." Id
-// ReturnStmt = "return" Expr
-// PrintStmt = "print" "(" Expr ")"
-
 func (p *Parser) ParseBlock() {
 	p.ParseStatementList()
 }
@@ -25,12 +14,23 @@ func (p *Parser) ParseStatementList() {
 		return
 	case "$":
 		p.errorSintactico("fin de archivo inesperado, falta un 'end'", p.tokenActual().Linea)
+		return
 	default:
 		p.errorInesperado()
+		p.ParseStatementList()
 	}
 }
 
 func (p *Parser) ParseStatement() {
+	defer func() {
+		if r := recover(); r != nil {
+			if _, ok := r.(SyntaxError); ok {
+				return
+			}
+			panic(r)
+		}
+	}()
+
 	switch p.tokenActual().NombreToken {
 	case "let", "var":
 		p.ParseVar()

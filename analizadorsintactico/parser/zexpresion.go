@@ -1,30 +1,5 @@
 package parser
 
-// Reglas en gramática:
-// Expr = OrExpr
-// OrExpr = AndExpr OrExprT
-// OrExprT = "or" AndExpr OrExprT | e
-// AndExpr = NotExpr AndExprT
-// AndExprT = "and" NotExpr AndExprT | e
-// NotExpr = "not" NotExpr | Comparison
-// Comparison = Additive ComparisonOpt
-// ComparisonOpt = CompOp Additive | e
-// CompOp = "=" | "<>" | "<" | "<=" | ">" | ">="
-// Additive = Multiplicative AdditiveT
-// AdditiveT = AddOp Multiplicative AdditiveT | e
-// AddOp = "+" | "-"
-// Multiplicative = Unary MultiplicativeT
-// MultiplicativeT = MultOp Unary MultiplicativeT | e
-// MultOp = "*" | "/" | "%"
-// Unary = "-" Unary | Primary
-// Primary = IntLiteral | FloatLiteral | StringLiteral | "true" | "false" | PrimaryIdent | ArrayLiteral | "(" Expr ")"
-// PrimaryIdent = Id PrimaryIdentOpt
-// PrimaryIdentOpt = "(" OptArgList ")" | ValueList
-// ArrayLiteral = "[" OptArgList "]"
-// OptArgList = ArgList | e
-// ArgList = Expr ArgListT
-// ArgListT = "," Expr ArgListT | e
-
 func (p *Parser) ParseExpr() {
 	p.ParseOrExpr()
 }

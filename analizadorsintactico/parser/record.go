@@ -1,10 +1,5 @@
 package parser
 
-// Reglas en gramática:
-// Record = "record" Id FieldList "end"
-// FieldList = FieldDecl FieldList | e
-// FieldDecl = Id ":" Type
-
 func (p *Parser) ParseRecord() {
 	p.Match("record")
 	p.Match("Id")

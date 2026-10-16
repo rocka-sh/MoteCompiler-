@@ -1,12 +1,5 @@
 package parser
 
-// Reglas en gramática:
-// Fn = "fn" Id "(" ParamList ")" TypeFun Block "end"
-// TypeFun = ":" Type | e
-// ParamList = Param ParamT | e
-// ParamT = "," Param ParamT | e
-// Param = Id ":" Type
-
 func (p *Parser) ParseFn() {
 	p.Match("fn")
 	p.Match("Id")
@@ -47,7 +40,7 @@ func (p *Parser) ParseParamT() {
 	case ",":
 		p.Match(",")
 		if p.tokenActual().NombreToken == ")" {
-			p.errorSintactico("coma final sobrante en lista de parámetros", p.tokenActual().Linea)
+			p.errorSintactico("coma final sobrante en lista de parametros", p.tokenActual().Linea)
 		}
 		p.ParseParam()
 		p.ParseParamT()

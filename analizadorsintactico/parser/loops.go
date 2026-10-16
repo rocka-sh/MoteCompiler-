@@ -1,9 +1,5 @@
 package parser
 
-// Reglas en gramática:
-// WhileStmt = "while" Expr "do" Block "end"
-// ForStmt = "for" Id "in" Expr ".." Expr "do" Block "end"
-
 func (p *Parser) ParseWhileStmt() {
 	p.Match("while")
 	p.ParseExpr()

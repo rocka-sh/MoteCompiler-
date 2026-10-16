@@ -1,11 +1,5 @@
 package parser
 
-// Reglas en gramática:
-// IfStmt = "if" Expr "then" Block ElifList ElseOpt "end"
-// ElifList = ElifClause ElifList | e
-// ElifClause = "elif" Expr "then" Block
-// ElseOpt = "else" Block | e
-
 func (p *Parser) ParseIfStmt() {
 	p.Match("if")
 	p.ParseExpr()

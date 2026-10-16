@@ -1,9 +1,5 @@
 package parser
 
-// Reglas en gramática:
-// Type = "int" | "float" | "string" | "bool" | ArrayType | Id
-// ArrayType = "[" IntLiteral "]" Type
-
 func (p *Parser) ParseType() {
 	switch p.tokenActual().NombreToken {
 	case "int":
